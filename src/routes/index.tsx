@@ -66,13 +66,14 @@ function Index() {
             >
               {step === 0 && (
                 <>
-                  <motion.div
-                    className="text-7xl mb-4 inline-block"
-                    animate={{ scale: [1, 1.2, 1], rotate: [0, -8, 8, 0] }}
-                    transition={{ repeat: Infinity, duration: 2.5 }}
-                  >
-                    💝
-                  </motion.div>
+                  <motion.img
+                    src="https://media.giphy.com/media/kQVXaC7kGr0DoGtSYl/giphy.gif"
+                    alt="Pingu waving hello"
+                    initial={{ scale: 0, rotate: -10 }}
+                    animate={{ scale: 1, rotate: 0 }}
+                    transition={{ type: "spring", duration: 0.9, bounce: 0.5 }}
+                    className="mx-auto mb-4 h-44 w-44 sm:h-52 sm:w-52 object-contain rounded-3xl shadow-glow border-4 border-white/40 bg-white/10"
+                  />
                   <h1 className="text-3xl sm:text-4xl font-bold text-foreground text-shadow-glow">
                     I made something special for you
                   </h1>
@@ -96,6 +97,7 @@ function Index() {
                   </div>
                 </>
               )}
+
 
               {step === 2 && (
                 <>
