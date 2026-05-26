@@ -101,13 +101,14 @@ function Index() {
 
               {step === 2 && (
                 <>
-                  <motion.div
-                    className="text-7xl mb-4 inline-block"
-                    animate={{ y: [0, -20, 0], rotate: [0, 360] }}
-                    transition={{ repeat: Infinity, duration: 3 }}
-                  >
-                    💌
-                  </motion.div>
+                  <motion.img
+                    src="https://media.giphy.com/media/xF77nzFm0dNK1MHnAc/giphy.gif"
+                    alt="Cute cat blowing kisses"
+                    initial={{ y: -30, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ type: "spring", duration: 0.8 }}
+                    className="mx-auto mb-4 h-44 w-44 sm:h-52 sm:w-52 object-contain rounded-3xl shadow-glow border-4 border-white/40 bg-white/10"
+                  />
                   <h1 className="text-2xl sm:text-3xl font-bold text-foreground text-shadow-glow">
                     A special message is coming...
                   </h1>
@@ -122,6 +123,7 @@ function Index() {
                   </motion.button>
                 </>
               )}
+
 
               {step === 3 && (
                 <>
