@@ -230,16 +230,24 @@ function Index() {
                 <>
                   <h1 className="text-2xl font-semibold text-foreground">I wrote you a letter 💌</h1>
                   <p className="mt-2 text-foreground/80">Tap to open</p>
+                  <motion.img
+                    src="https://media.giphy.com/media/ChKGaBXZTW9CgGt2s9/giphy.gif"
+                    alt="Cat with floating hearts"
+                    animate={{ y: [0, -6, 0] }}
+                    transition={{ repeat: Infinity, duration: 2 }}
+                    className="mx-auto mt-4 h-40 w-40 sm:h-48 sm:w-48 object-contain rounded-3xl shadow-glow border-4 border-white/40 bg-white/10"
+                  />
                   <motion.button
                     onClick={() => setStep(5)}
                     whileHover={{ scale: 1.15, rotate: [0, -5, 5, 0] }}
                     whileTap={{ scale: 0.85 }}
-                    className="text-8xl mt-6 cursor-pointer"
+                    className="text-7xl mt-4 cursor-pointer block mx-auto"
                   >
                     ✉️
                   </motion.button>
                 </>
               )}
+
 
               {step === 5 && (
                 <>
