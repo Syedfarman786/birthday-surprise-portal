@@ -203,29 +203,17 @@ function Index() {
                     </motion.div>
                   </div>
 
-                  {/* Dancing penguins */}
+                  {/* Dancing birthday penguin gif */}
                   <div className="flex justify-center items-end gap-3 mt-2 mb-4">
-                    {[0, 1, 2, 3].map((i) => (
-                      <motion.span
-                        key={i}
-                        className="text-5xl inline-block"
-                        animate={{
-                          y: [0, -18, 0, -10, 0],
-                          rotate: [-15, 15, -15, 10, -15],
-                          x: [0, 4, -4, 4, 0],
-                        }}
-                        transition={{
-                          repeat: Infinity,
-                          duration: 1.1,
-                          delay: i * 0.18,
-                          ease: "easeInOut",
-                        }}
-                        style={{ filter: "drop-shadow(0 6px 10px rgba(0,0,0,0.25))" }}
-                      >
-                        🐧
-                      </motion.span>
-                    ))}
+                    <motion.img
+                      src="https://media.giphy.com/media/MRHOk4gSHfcuq55Lcj/giphy.gif"
+                      alt="Penguin celebrating birthday"
+                      animate={{ y: [0, -10, 0], rotate: [-3, 3, -3] }}
+                      transition={{ repeat: Infinity, duration: 1.6 }}
+                      className="h-36 w-36 sm:h-44 sm:w-44 object-contain rounded-2xl shadow-glow border-4 border-white/40 bg-white/10"
+                    />
                   </div>
+
 
                   <motion.button
                     onClick={() => setStep(4)}
