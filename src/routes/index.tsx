@@ -66,13 +66,14 @@ function Index() {
             >
               {step === 0 && (
                 <>
-                  <motion.div
-                    className="text-7xl mb-4 inline-block"
-                    animate={{ scale: [1, 1.2, 1], rotate: [0, -8, 8, 0] }}
-                    transition={{ repeat: Infinity, duration: 2.5 }}
-                  >
-                    💝
-                  </motion.div>
+                  <motion.img
+                    src="https://media.giphy.com/media/kQVXaC7kGr0DoGtSYl/giphy.gif"
+                    alt="Pingu waving hello"
+                    initial={{ scale: 0, rotate: -10 }}
+                    animate={{ scale: 1, rotate: 0 }}
+                    transition={{ type: "spring", duration: 0.9, bounce: 0.5 }}
+                    className="mx-auto mb-4 h-44 w-44 sm:h-52 sm:w-52 object-contain rounded-3xl shadow-glow border-4 border-white/40 bg-white/10"
+                  />
                   <h1 className="text-3xl sm:text-4xl font-bold text-foreground text-shadow-glow">
                     I made something special for you
                   </h1>
@@ -97,15 +98,17 @@ function Index() {
                 </>
               )}
 
+
               {step === 2 && (
                 <>
-                  <motion.div
-                    className="text-7xl mb-4 inline-block"
-                    animate={{ y: [0, -20, 0], rotate: [0, 360] }}
-                    transition={{ repeat: Infinity, duration: 3 }}
-                  >
-                    💌
-                  </motion.div>
+                  <motion.img
+                    src="https://media.giphy.com/media/xF77nzFm0dNK1MHnAc/giphy.gif"
+                    alt="Cute cat blowing kisses"
+                    initial={{ y: -30, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ type: "spring", duration: 0.8 }}
+                    className="mx-auto mb-4 h-44 w-44 sm:h-52 sm:w-52 object-contain rounded-3xl shadow-glow border-4 border-white/40 bg-white/10"
+                  />
                   <h1 className="text-2xl sm:text-3xl font-bold text-foreground text-shadow-glow">
                     A special message is coming...
                   </h1>
@@ -120,6 +123,7 @@ function Index() {
                   </motion.button>
                 </>
               )}
+
 
               {step === 3 && (
                 <>
@@ -199,29 +203,17 @@ function Index() {
                     </motion.div>
                   </div>
 
-                  {/* Dancing penguins */}
+                  {/* Dancing birthday penguin gif */}
                   <div className="flex justify-center items-end gap-3 mt-2 mb-4">
-                    {[0, 1, 2, 3].map((i) => (
-                      <motion.span
-                        key={i}
-                        className="text-5xl inline-block"
-                        animate={{
-                          y: [0, -18, 0, -10, 0],
-                          rotate: [-15, 15, -15, 10, -15],
-                          x: [0, 4, -4, 4, 0],
-                        }}
-                        transition={{
-                          repeat: Infinity,
-                          duration: 1.1,
-                          delay: i * 0.18,
-                          ease: "easeInOut",
-                        }}
-                        style={{ filter: "drop-shadow(0 6px 10px rgba(0,0,0,0.25))" }}
-                      >
-                        🐧
-                      </motion.span>
-                    ))}
+                    <motion.img
+                      src="https://media.giphy.com/media/MRHOk4gSHfcuq55Lcj/giphy.gif"
+                      alt="Penguin celebrating birthday"
+                      animate={{ y: [0, -10, 0], rotate: [-3, 3, -3] }}
+                      transition={{ repeat: Infinity, duration: 1.6 }}
+                      className="h-36 w-36 sm:h-44 sm:w-44 object-contain rounded-2xl shadow-glow border-4 border-white/40 bg-white/10"
+                    />
                   </div>
+
 
                   <motion.button
                     onClick={() => setStep(4)}
@@ -238,16 +230,24 @@ function Index() {
                 <>
                   <h1 className="text-2xl font-semibold text-foreground">I wrote you a letter 💌</h1>
                   <p className="mt-2 text-foreground/80">Tap to open</p>
+                  <motion.img
+                    src="https://media.giphy.com/media/ChKGaBXZTW9CgGt2s9/giphy.gif"
+                    alt="Cat with floating hearts"
+                    animate={{ y: [0, -6, 0] }}
+                    transition={{ repeat: Infinity, duration: 2 }}
+                    className="mx-auto mt-4 h-40 w-40 sm:h-48 sm:w-48 object-contain rounded-3xl shadow-glow border-4 border-white/40 bg-white/10"
+                  />
                   <motion.button
                     onClick={() => setStep(5)}
                     whileHover={{ scale: 1.15, rotate: [0, -5, 5, 0] }}
                     whileTap={{ scale: 0.85 }}
-                    className="text-8xl mt-6 cursor-pointer"
+                    className="text-7xl mt-4 cursor-pointer block mx-auto"
                   >
                     ✉️
                   </motion.button>
                 </>
               )}
+
 
               {step === 5 && (
                 <>
@@ -309,41 +309,51 @@ function Index() {
 
               {step === 7 && (
                 <>
-                  <div className="flex justify-center gap-2 text-5xl">
+                  <motion.img
+                    src="https://media.giphy.com/media/5SbA6ZRhiI5jriUwqu/giphy.gif"
+                    alt="Cat giving flowers"
+                    initial={{ scale: 0, rotate: -15 }}
+                    animate={{ scale: 1, rotate: 0 }}
+                    transition={{ type: "spring", duration: 1, bounce: 0.5 }}
+                    className="mx-auto mb-4 h-48 w-48 sm:h-56 sm:w-56 object-contain rounded-3xl shadow-glow border-4 border-white/40 bg-white/10"
+                  />
+                  <div className="flex justify-center gap-2 text-4xl">
                     {["🌸", "🌹", "🌷", "🌺", "🌻"].map((f, i) => (
                       <motion.span
                         key={i}
-                        animate={{ y: [-10, 10, -10], rotate: [-10, 10, -10] }}
+                        animate={{ y: [-6, 6, -6], rotate: [-10, 10, -10] }}
                         transition={{ repeat: Infinity, duration: 2, delay: i * 0.2 }}
                       >
                         {f}
                       </motion.span>
                     ))}
                   </div>
-                  <h1 className="mt-5 text-2xl font-bold text-foreground text-shadow-glow">
+                  <h1 className="mt-4 text-2xl font-bold text-foreground text-shadow-glow">
                     A bouquet, just for you 💐
                   </h1>
                   <p className="mt-2 text-foreground/80">Because you brighten my world.</p>
                   <button
                     onClick={() => setStep(9)}
-                    className="mt-7 bg-gradient-button text-primary-foreground px-7 py-3 rounded-full font-semibold shadow-soft hover:scale-105 transition-transform"
+                    className="mt-6 bg-gradient-button text-primary-foreground px-7 py-3 rounded-full font-semibold shadow-soft hover:scale-105 transition-transform"
                   >
                     One more thing →
                   </button>
                 </>
               )}
 
+
               {step === 9 && (
                 <>
-                  <motion.div
-                    className="text-7xl inline-block"
-                    animate={{ scale: [1, 1.25, 1] }}
-                    transition={{ repeat: Infinity, duration: 1.1 }}
-                  >
-                    💖
-                  </motion.div>
+                  <motion.img
+                    src="https://media.giphy.com/media/xF77nzFm0dNK1MHnAc/giphy.gif"
+                    alt="Cat blowing a heart kiss"
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ type: "spring", duration: 0.9, bounce: 0.5 }}
+                    className="mx-auto mb-4 h-44 w-44 sm:h-52 sm:w-52 object-contain rounded-3xl shadow-glow border-4 border-white/40 bg-white/10"
+                  />
                   <motion.h1
-                    className="mt-4 text-4xl sm:text-5xl font-bold bg-gradient-romance bg-clip-text text-transparent"
+                    className="mt-2 text-4xl sm:text-5xl font-bold bg-gradient-romance bg-clip-text text-transparent"
                     animate={{ scale: [1, 1.05, 1] }}
                     transition={{ repeat: Infinity, duration: 2 }}
                   >
@@ -354,12 +364,13 @@ function Index() {
                   </p>
                   <button
                     onClick={() => setStep(0)}
-                    className="mt-7 bg-muted/40 backdrop-blur text-foreground px-6 py-2 rounded-full text-sm border border-border hover:bg-muted/60 transition"
+                    className="mt-6 bg-muted/40 backdrop-blur text-foreground px-6 py-2 rounded-full text-sm border border-border hover:bg-muted/60 transition"
                   >
                     Play again 🔁
                   </button>
                 </>
               )}
+
             </motion.div>
           </AnimatePresence>
         </div>
