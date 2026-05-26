@@ -344,15 +344,16 @@ function Index() {
 
               {step === 9 && (
                 <>
-                  <motion.div
-                    className="text-7xl inline-block"
-                    animate={{ scale: [1, 1.25, 1] }}
-                    transition={{ repeat: Infinity, duration: 1.1 }}
-                  >
-                    💖
-                  </motion.div>
+                  <motion.img
+                    src="https://media.giphy.com/media/xF77nzFm0dNK1MHnAc/giphy.gif"
+                    alt="Cat blowing a heart kiss"
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ type: "spring", duration: 0.9, bounce: 0.5 }}
+                    className="mx-auto mb-4 h-44 w-44 sm:h-52 sm:w-52 object-contain rounded-3xl shadow-glow border-4 border-white/40 bg-white/10"
+                  />
                   <motion.h1
-                    className="mt-4 text-4xl sm:text-5xl font-bold bg-gradient-romance bg-clip-text text-transparent"
+                    className="mt-2 text-4xl sm:text-5xl font-bold bg-gradient-romance bg-clip-text text-transparent"
                     animate={{ scale: [1, 1.05, 1] }}
                     transition={{ repeat: Infinity, duration: 2 }}
                   >
@@ -363,12 +364,13 @@ function Index() {
                   </p>
                   <button
                     onClick={() => setStep(0)}
-                    className="mt-7 bg-muted/40 backdrop-blur text-foreground px-6 py-2 rounded-full text-sm border border-border hover:bg-muted/60 transition"
+                    className="mt-6 bg-muted/40 backdrop-blur text-foreground px-6 py-2 rounded-full text-sm border border-border hover:bg-muted/60 transition"
                   >
                     Play again 🔁
                   </button>
                 </>
               )}
+
             </motion.div>
           </AnimatePresence>
         </div>
