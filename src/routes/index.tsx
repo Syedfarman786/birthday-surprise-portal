@@ -309,29 +309,38 @@ function Index() {
 
               {step === 7 && (
                 <>
-                  <div className="flex justify-center gap-2 text-5xl">
+                  <motion.img
+                    src="https://media.giphy.com/media/5SbA6ZRhiI5jriUwqu/giphy.gif"
+                    alt="Cat giving flowers"
+                    initial={{ scale: 0, rotate: -15 }}
+                    animate={{ scale: 1, rotate: 0 }}
+                    transition={{ type: "spring", duration: 1, bounce: 0.5 }}
+                    className="mx-auto mb-4 h-48 w-48 sm:h-56 sm:w-56 object-contain rounded-3xl shadow-glow border-4 border-white/40 bg-white/10"
+                  />
+                  <div className="flex justify-center gap-2 text-4xl">
                     {["🌸", "🌹", "🌷", "🌺", "🌻"].map((f, i) => (
                       <motion.span
                         key={i}
-                        animate={{ y: [-10, 10, -10], rotate: [-10, 10, -10] }}
+                        animate={{ y: [-6, 6, -6], rotate: [-10, 10, -10] }}
                         transition={{ repeat: Infinity, duration: 2, delay: i * 0.2 }}
                       >
                         {f}
                       </motion.span>
                     ))}
                   </div>
-                  <h1 className="mt-5 text-2xl font-bold text-foreground text-shadow-glow">
+                  <h1 className="mt-4 text-2xl font-bold text-foreground text-shadow-glow">
                     A bouquet, just for you 💐
                   </h1>
                   <p className="mt-2 text-foreground/80">Because you brighten my world.</p>
                   <button
                     onClick={() => setStep(9)}
-                    className="mt-7 bg-gradient-button text-primary-foreground px-7 py-3 rounded-full font-semibold shadow-soft hover:scale-105 transition-transform"
+                    className="mt-6 bg-gradient-button text-primary-foreground px-7 py-3 rounded-full font-semibold shadow-soft hover:scale-105 transition-transform"
                   >
                     One more thing →
                   </button>
                 </>
               )}
+
 
               {step === 9 && (
                 <>
