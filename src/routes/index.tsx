@@ -123,29 +123,114 @@ function Index() {
 
               {step === 3 && (
                 <>
-                  <motion.div
-                    initial={{ scale: 0, rotate: -180 }}
-                    animate={{ scale: 1, rotate: 0 }}
-                    transition={{ type: "spring", duration: 1 }}
-                    className="text-6xl mb-2"
-                  >
-                    🎂
-                  </motion.div>
+                  {/* Floating party emojis */}
+                  <div className="flex justify-center gap-2 text-2xl mb-2">
+                    {["🎉", "✨", "🎊", "✨", "🎉"].map((e, i) => (
+                      <motion.span
+                        key={i}
+                        animate={{ y: [-4, -14, -4], rotate: [-10, 10, -10] }}
+                        transition={{ repeat: Infinity, duration: 1.8, delay: i * 0.15 }}
+                      >
+                        {e}
+                      </motion.span>
+                    ))}
+                  </div>
+
+                  {/* Happy Birthday heading ABOVE the cake */}
                   <motion.h1
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ delay: 0.3, type: "spring" }}
-                    className="text-4xl sm:text-5xl font-bold bg-gradient-romance bg-clip-text text-transparent"
+                    initial={{ scale: 0, y: -20 }}
+                    animate={{ scale: 1, y: 0 }}
+                    transition={{ type: "spring", duration: 0.9 }}
+                    className="text-4xl sm:text-5xl font-extrabold text-foreground text-shadow-glow tracking-tight"
+                    style={{
+                      background: "linear-gradient(135deg, #ff8fab, #ffd93d, #c490ff)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      backgroundClip: "text",
+                      paddingBottom: "0.1em",
+                      lineHeight: 1.15,
+                    }}
                   >
                     Happy Birthday!
                   </motion.h1>
-                  <p className="mt-4 text-lg text-foreground/90">You are so so special to me 💖</p>
-                  <button
+
+                  <motion.p
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.4 }}
+                    className="mt-2 text-base sm:text-lg text-foreground/90 font-medium"
+                  >
+                    You are so special to me 💖
+                  </motion.p>
+
+                  {/* HUGE cake with flickering candles */}
+                  <div className="relative my-6 flex flex-col items-center">
+                    {/* Candle flames */}
+                    <div className="flex gap-6 mb-[-18px] z-10">
+                      {[0, 1, 2].map((i) => (
+                        <motion.span
+                          key={i}
+                          className="text-3xl"
+                          animate={{
+                            scale: [1, 1.25, 0.9, 1.15, 1],
+                            rotate: [-6, 6, -4, 4, -6],
+                            y: [0, -3, 0, -2, 0],
+                          }}
+                          transition={{ repeat: Infinity, duration: 0.9, delay: i * 0.15 }}
+                          style={{ filter: "drop-shadow(0 0 10px #ffb84d)" }}
+                        >
+                          🕯️
+                        </motion.span>
+                      ))}
+                    </div>
+                    <motion.div
+                      initial={{ scale: 0, rotate: -25 }}
+                      animate={{ scale: 1, rotate: 0 }}
+                      transition={{ type: "spring", duration: 1.2, bounce: 0.5 }}
+                      className="text-[10rem] sm:text-[12rem] leading-none select-none"
+                      style={{ filter: "drop-shadow(0 12px 28px rgba(255,107,157,0.45))" }}
+                    >
+                      <motion.div
+                        animate={{ y: [0, -10, 0], rotate: [-2, 2, -2] }}
+                        transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
+                      >
+                        🎂
+                      </motion.div>
+                    </motion.div>
+                  </div>
+
+                  {/* Dancing penguins */}
+                  <div className="flex justify-center items-end gap-3 mt-2 mb-4">
+                    {[0, 1, 2, 3].map((i) => (
+                      <motion.span
+                        key={i}
+                        className="text-5xl inline-block"
+                        animate={{
+                          y: [0, -18, 0, -10, 0],
+                          rotate: [-15, 15, -15, 10, -15],
+                          x: [0, 4, -4, 4, 0],
+                        }}
+                        transition={{
+                          repeat: Infinity,
+                          duration: 1.1,
+                          delay: i * 0.18,
+                          ease: "easeInOut",
+                        }}
+                        style={{ filter: "drop-shadow(0 6px 10px rgba(0,0,0,0.25))" }}
+                      >
+                        🐧
+                      </motion.span>
+                    ))}
+                  </div>
+
+                  <motion.button
                     onClick={() => setStep(4)}
-                    className="mt-7 bg-gradient-button text-primary-foreground px-7 py-3 rounded-full font-semibold shadow-soft hover:scale-105 transition-transform"
+                    whileHover={{ scale: 1.08 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="mt-3 bg-gradient-button text-primary-foreground px-8 py-3 rounded-full font-semibold shadow-glow animate-heartbeat"
                   >
                     Next →
-                  </button>
+                  </motion.button>
                 </>
               )}
 
