@@ -1,26 +1,284 @@
+import { useEffect, useRef, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { motion, AnimatePresence } from "framer-motion";
+import confetti from "canvas-confetti";
+import { FloatingHearts, Sparkles } from "@/components/FloatingHearts";
 
 export const Route = createFileRoute("/")({
   component: Index,
+  head: () => ({
+    meta: [
+      { title: "A Special Birthday Wish 💖" },
+      { name: "description", content: "A magical birthday surprise made just for you." },
+    ],
+  }),
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
-
 function Index() {
-  return <PlaceholderIndex />;
+  const [step, setStep] = useState(0);
+  const [noPos, setNoPos] = useState({ x: 0, y: 0 });
+  const [noCount, setNoCount] = useState(0);
+
+  // Birthday confetti
+  useEffect(() => {
+    if (step === 3) {
+      const fire = () => {
+        confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 }, colors: ["#ff6b9d", "#ffd93d", "#c490ff", "#ff8fab"] });
+      };
+      fire();
+      const t = setTimeout(fire, 600);
+      return () => clearTimeout(t);
+    }
+    if (step === 5 || step === 9) {
+      const interval = setInterval(() => {
+        confetti({ particleCount: 40, angle: 60, spread: 55, origin: { x: 0 }, colors: ["#ff6b9d", "#ffd93d"] });
+        confetti({ particleCount: 40, angle: 120, spread: 55, origin: { x: 1 }, colors: ["#c490ff", "#ff8fab"] });
+      }, 1500);
+      return () => clearInterval(interval);
+    }
+  }, [step]);
+
+  const dodgeNo = () => {
+    setNoCount((c) => c + 1);
+    setNoPos({
+      x: (Math.random() - 0.5) * 240,
+      y: (Math.random() - 0.5) * 160,
+    });
+  };
+
+  return (
+    <main className="relative min-h-screen w-full overflow-hidden bg-gradient-dreamy flex items-center justify-center px-4 py-8">
+      <FloatingHearts />
+      <Sparkles />
+
+      <div className="relative z-10 w-full max-w-lg">
+        <div className="relative rounded-3xl bg-card/30 backdrop-blur-2xl border border-border shadow-glow p-8 sm:p-10 text-center overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-romance opacity-10 pointer-events-none" />
+
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={step}
+              initial={{ opacity: 0, y: 20, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -20, scale: 0.95 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="relative"
+            >
+              {step === 0 && (
+                <>
+                  <motion.div
+                    className="text-7xl mb-4 inline-block"
+                    animate={{ scale: [1, 1.2, 1], rotate: [0, -8, 8, 0] }}
+                    transition={{ repeat: Infinity, duration: 2.5 }}
+                  >
+                    💝
+                  </motion.div>
+                  <h1 className="text-3xl sm:text-4xl font-bold text-foreground text-shadow-glow">
+                    I made something special for you
+                  </h1>
+                  <p className="mt-3 text-lg text-foreground/90">Do you wanna see it? 💖</p>
+                  <div className="mt-7 flex gap-4 justify-center items-center relative h-14">
+                    <button
+                      onClick={() => setStep(2)}
+                      className="bg-gradient-button text-primary-foreground px-7 py-3 rounded-full font-semibold shadow-soft hover:scale-110 transition-transform"
+                    >
+                      Yes 💕
+                    </button>
+                    <motion.button
+                      onMouseEnter={dodgeNo}
+                      onClick={dodgeNo}
+                      animate={{ x: noPos.x, y: noPos.y }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                      className="bg-muted text-muted-foreground px-7 py-3 rounded-full font-semibold"
+                    >
+                      {noCount > 3 ? "Please? 🥺" : "No 😒"}
+                    </motion.button>
+                  </div>
+                </>
+              )}
+
+              {step === 2 && (
+                <>
+                  <motion.div
+                    className="text-7xl mb-4 inline-block"
+                    animate={{ y: [0, -20, 0], rotate: [0, 360] }}
+                    transition={{ repeat: Infinity, duration: 3 }}
+                  >
+                    💌
+                  </motion.div>
+                  <h1 className="text-2xl sm:text-3xl font-bold text-foreground text-shadow-glow">
+                    A special message is coming...
+                  </h1>
+                  <p className="mt-3 text-foreground/80">Tap the heart to reveal 💗</p>
+                  <motion.button
+                    onClick={() => setStep(3)}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="mt-7 bg-gradient-button text-primary-foreground px-8 py-3 rounded-full font-semibold shadow-glow animate-heartbeat"
+                  >
+                    ❤️ Click the Heart
+                  </motion.button>
+                </>
+              )}
+
+              {step === 3 && (
+                <>
+                  <motion.div
+                    initial={{ scale: 0, rotate: -180 }}
+                    animate={{ scale: 1, rotate: 0 }}
+                    transition={{ type: "spring", duration: 1 }}
+                    className="text-6xl mb-2"
+                  >
+                    🎂
+                  </motion.div>
+                  <motion.h1
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: 0.3, type: "spring" }}
+                    className="text-4xl sm:text-5xl font-bold bg-gradient-romance bg-clip-text text-transparent"
+                  >
+                    Happy Birthday!
+                  </motion.h1>
+                  <p className="mt-4 text-lg text-foreground/90">You are so so special to me 💖</p>
+                  <button
+                    onClick={() => setStep(4)}
+                    className="mt-7 bg-gradient-button text-primary-foreground px-7 py-3 rounded-full font-semibold shadow-soft hover:scale-105 transition-transform"
+                  >
+                    Next →
+                  </button>
+                </>
+              )}
+
+              {step === 4 && (
+                <>
+                  <h1 className="text-2xl font-semibold text-foreground">I wrote you a letter 💌</h1>
+                  <p className="mt-2 text-foreground/80">Tap to open</p>
+                  <motion.button
+                    onClick={() => setStep(5)}
+                    whileHover={{ scale: 1.15, rotate: [0, -5, 5, 0] }}
+                    whileTap={{ scale: 0.85 }}
+                    className="text-8xl mt-6 cursor-pointer"
+                  >
+                    ✉️
+                  </motion.button>
+                </>
+              )}
+
+              {step === 5 && (
+                <>
+                  <motion.div
+                    animate={{ scale: [1, 1.15, 1] }}
+                    transition={{ repeat: Infinity, duration: 1.4 }}
+                    className="text-5xl mb-3"
+                  >
+                    💖
+                  </motion.div>
+                  <h1 className="text-2xl sm:text-3xl font-bold text-foreground text-shadow-glow">
+                    My Dearest,
+                  </h1>
+                  <p className="mt-4 text-foreground/95 leading-relaxed">
+                    You are the most amazing person in my life. Every day with you feels like magic.
+                    On your special day, I just want you to know — you are loved, cherished, and adored. 🌹
+                  </p>
+                  <button
+                    onClick={() => setStep(6)}
+                    className="mt-7 bg-gradient-button text-primary-foreground px-7 py-3 rounded-full font-semibold shadow-soft hover:scale-105 transition-transform"
+                  >
+                    See your gifts 🎁
+                  </button>
+                </>
+              )}
+
+              {step === 6 && (
+                <>
+                  <h1 className="text-2xl font-bold text-foreground text-shadow-glow">🎟️ Love Coupons</h1>
+                  <p className="text-foreground/80 text-sm mt-1">Redeem anytime 💕</p>
+                  <div className="grid grid-cols-2 gap-3 mt-5">
+                    {[
+                      { label: "Dinner Date", emoji: "🍽️" },
+                      { label: "Movie Night", emoji: "🎬" },
+                      { label: "Day Out", emoji: "💕" },
+                      { label: "Surprise Gift", emoji: "🎁" },
+                    ].map((c, i) => (
+                      <motion.div
+                        key={c.label}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: i * 0.1 }}
+                        whileHover={{ scale: 1.08, rotate: [-2, 2, 0] }}
+                        className="bg-card/70 backdrop-blur border border-border rounded-2xl p-4 shadow-soft cursor-pointer"
+                      >
+                        <div className="text-3xl">{c.emoji}</div>
+                        <div className="text-sm mt-1 font-semibold text-card-foreground">{c.label}</div>
+                      </motion.div>
+                    ))}
+                  </div>
+                  <button
+                    onClick={() => setStep(7)}
+                    className="mt-6 bg-gradient-button text-primary-foreground px-7 py-3 rounded-full font-semibold shadow-soft hover:scale-105 transition-transform"
+                  >
+                    Flowers for you 💐
+                  </button>
+                </>
+              )}
+
+              {step === 7 && (
+                <>
+                  <div className="flex justify-center gap-2 text-5xl">
+                    {["🌸", "🌹", "🌷", "🌺", "🌻"].map((f, i) => (
+                      <motion.span
+                        key={i}
+                        animate={{ y: [-10, 10, -10], rotate: [-10, 10, -10] }}
+                        transition={{ repeat: Infinity, duration: 2, delay: i * 0.2 }}
+                      >
+                        {f}
+                      </motion.span>
+                    ))}
+                  </div>
+                  <h1 className="mt-5 text-2xl font-bold text-foreground text-shadow-glow">
+                    A bouquet, just for you 💐
+                  </h1>
+                  <p className="mt-2 text-foreground/80">Because you brighten my world.</p>
+                  <button
+                    onClick={() => setStep(9)}
+                    className="mt-7 bg-gradient-button text-primary-foreground px-7 py-3 rounded-full font-semibold shadow-soft hover:scale-105 transition-transform"
+                  >
+                    One more thing →
+                  </button>
+                </>
+              )}
+
+              {step === 9 && (
+                <>
+                  <motion.div
+                    className="text-7xl inline-block"
+                    animate={{ scale: [1, 1.25, 1] }}
+                    transition={{ repeat: Infinity, duration: 1.1 }}
+                  >
+                    💖
+                  </motion.div>
+                  <motion.h1
+                    className="mt-4 text-4xl sm:text-5xl font-bold bg-gradient-romance bg-clip-text text-transparent"
+                    animate={{ scale: [1, 1.05, 1] }}
+                    transition={{ repeat: Infinity, duration: 2 }}
+                  >
+                    I Love You
+                  </motion.h1>
+                  <p className="mt-4 text-lg text-foreground/95">
+                    Stay with me forever. Happy Birthday, my love. ❤️
+                  </p>
+                  <button
+                    onClick={() => setStep(0)}
+                    className="mt-7 bg-muted/40 backdrop-blur text-foreground px-6 py-2 rounded-full text-sm border border-border hover:bg-muted/60 transition"
+                  >
+                    Play again 🔁
+                  </button>
+                </>
+              )}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </div>
+    </main>
+  );
 }
