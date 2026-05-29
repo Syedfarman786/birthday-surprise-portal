@@ -314,6 +314,15 @@ function Index() {
                   </h1>
                   <p className="mt-2 text-foreground/80">Because you brighten my world.</p>
 
+                  <motion.img
+                    src="https://media.giphy.com/media/5SbA6ZRhiI5jriUwqu/giphy.gif"
+                    alt="Cute cat giving flowers"
+                    initial={{ scale: 0, rotate: -15 }}
+                    animate={{ scale: 1, rotate: 0 }}
+                    transition={{ type: "spring", duration: 0.9, bounce: 0.5 }}
+                    className="mx-auto mt-4 h-36 w-36 sm:h-40 sm:w-40 object-contain rounded-3xl shadow-glow border-4 border-white/40 bg-white/10"
+                  />
+
                   {/* Real bouquet built from layered, arranged flowers */}
                   <div className="relative mx-auto mt-6 h-72 w-64 sm:h-80 sm:w-72 select-none">
                     {/* soft glow behind */}
