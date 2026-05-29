@@ -135,11 +135,29 @@
 .animate-sparkle { animation: sparkle 2s ease-in-out infinite; }
 .animate-heartbeat { animation: heartbeat 1.2s ease-in-out infinite; }
 .bg-gradient-romance { background: var(--gradient-romance); background-size: 200% 200%; animation: gradient-shift 8s ease infinite; }
-.bg-gradient-dreamy { background: var(--gradient-dreamy); background-size: 200% 200%; animation: gradient-shift 12s ease infinite; }
+.bg-gradient-dreamy {
+  background: var(--gradient-dreamy);
+  background-size: 180% 180%, 200% 200%, 220% 220%, 200% 200%, 300% 300%;
+  animation: gradient-shift 14s ease infinite;
+}
 .bg-gradient-button { background: var(--gradient-button); }
 .shadow-glow { box-shadow: var(--shadow-glow); }
 .shadow-soft { box-shadow: var(--shadow-soft); }
 .text-shadow-glow { text-shadow: 0 0 20px oklch(0.98 0.01 340 / 0.8), 0 0 40px oklch(0.72 0.22 350 / 0.6); }
+
+.love-text {
+  background: var(--gradient-love-text);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: gradient-shift 5s ease infinite;
+  text-shadow: 0 0 60px rgba(255, 94, 138, 0.45);
+  line-height: 1.15;
+  padding: 0.08em 0.05em 0.18em;
+  display: inline-block;
+}
 
 .dark {
   --background: oklch(0.129 0.042 264.695);
