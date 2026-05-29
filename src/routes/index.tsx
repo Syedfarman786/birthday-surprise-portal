@@ -67,8 +67,8 @@ function Index() {
               {step === 0 && (
                 <>
                   <motion.img
-                    src="https://media.giphy.com/media/3o6Zt481isNVuQI1l6/giphy.gif"
-                    alt="Cute surprise gift with balloons"
+                    src="https://media.giphy.com/media/kQVXaC7kGr0DoGtSYl/giphy.gif"
+                    alt="Cute penguin waving hello"
                     initial={{ scale: 0, rotate: -10 }}
                     animate={{ scale: 1, rotate: 0 }}
                     transition={{ type: "spring", duration: 0.9, bounce: 0.5 }}
@@ -231,8 +231,8 @@ function Index() {
                   <h1 className="text-2xl font-semibold text-foreground">I wrote you a letter 💌</h1>
                   <p className="mt-2 text-foreground/80">Tap to open</p>
                   <motion.img
-                    src="https://media.giphy.com/media/l0HlQ7LRalQqdWfao/giphy.gif"
-                    alt="Animated love letter with hearts"
+                    src="https://media.giphy.com/media/ChKGaBXZTW9CgGt2s9/giphy.gif"
+                    alt="Cute cat with floating hearts holding a letter"
                     animate={{ y: [0, -6, 0] }}
                     transition={{ repeat: Infinity, duration: 2 }}
                     className="mx-auto mt-4 h-40 w-40 sm:h-48 sm:w-48 object-contain rounded-3xl shadow-glow border-4 border-white/40 bg-white/10"
@@ -313,6 +313,15 @@ function Index() {
                     A bouquet, just for you 💐
                   </h1>
                   <p className="mt-2 text-foreground/80">Because you brighten my world.</p>
+
+                  <motion.img
+                    src="https://media.giphy.com/media/5SbA6ZRhiI5jriUwqu/giphy.gif"
+                    alt="Cute cat giving flowers"
+                    initial={{ scale: 0, rotate: -15 }}
+                    animate={{ scale: 1, rotate: 0 }}
+                    transition={{ type: "spring", duration: 0.9, bounce: 0.5 }}
+                    className="mx-auto mt-4 h-36 w-36 sm:h-40 sm:w-40 object-contain rounded-3xl shadow-glow border-4 border-white/40 bg-white/10"
+                  />
 
                   {/* Real bouquet built from layered, arranged flowers */}
                   <div className="relative mx-auto mt-6 h-72 w-64 sm:h-80 sm:w-72 select-none">
