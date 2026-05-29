@@ -102,8 +102,8 @@ function Index() {
               {step === 2 && (
                 <>
                   <motion.img
-                    src="https://media.giphy.com/media/xF77nzFm0dNK1MHnAc/giphy.gif"
-                    alt="Cute cat blowing kisses"
+                    src="https://media.giphy.com/media/3oKIPnAiaMCws8nOsE/giphy.gif"
+                    alt="Floating love letter with hearts"
                     initial={{ y: -30, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ type: "spring", duration: 0.8 }}
