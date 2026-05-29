@@ -231,8 +231,8 @@ function Index() {
                   <h1 className="text-2xl font-semibold text-foreground">I wrote you a letter 💌</h1>
                   <p className="mt-2 text-foreground/80">Tap to open</p>
                   <motion.img
-                    src="https://media.giphy.com/media/l0HlQ7LRalQqdWfao/giphy.gif"
-                    alt="Animated love letter with hearts"
+                    src="https://media.giphy.com/media/ChKGaBXZTW9CgGt2s9/giphy.gif"
+                    alt="Cute cat with floating hearts holding a letter"
                     animate={{ y: [0, -6, 0] }}
                     transition={{ repeat: Infinity, duration: 2 }}
                     className="mx-auto mt-4 h-40 w-40 sm:h-48 sm:w-48 object-contain rounded-3xl shadow-glow border-4 border-white/40 bg-white/10"
