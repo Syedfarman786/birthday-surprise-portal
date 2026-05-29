@@ -309,29 +309,77 @@ function Index() {
 
               {step === 7 && (
                 <>
-                  <motion.img
-                    src="https://media.giphy.com/media/5SbA6ZRhiI5jriUwqu/giphy.gif"
-                    alt="Cat giving flowers"
-                    initial={{ scale: 0, rotate: -15 }}
-                    animate={{ scale: 1, rotate: 0 }}
-                    transition={{ type: "spring", duration: 1, bounce: 0.5 }}
-                    className="mx-auto mb-4 h-48 w-48 sm:h-56 sm:w-56 object-contain rounded-3xl shadow-glow border-4 border-white/40 bg-white/10"
-                  />
-                  <div className="flex justify-center gap-2 text-4xl">
-                    {["🌸", "🌹", "🌷", "🌺", "🌻"].map((f, i) => (
-                      <motion.span
-                        key={i}
-                        animate={{ y: [-6, 6, -6], rotate: [-10, 10, -10] }}
-                        transition={{ repeat: Infinity, duration: 2, delay: i * 0.2 }}
-                      >
-                        {f}
-                      </motion.span>
-                    ))}
-                  </div>
-                  <h1 className="mt-4 text-2xl font-bold text-foreground text-shadow-glow">
+                  <h1 className="text-2xl sm:text-3xl font-bold text-foreground text-shadow-glow">
                     A bouquet, just for you 💐
                   </h1>
                   <p className="mt-2 text-foreground/80">Because you brighten my world.</p>
+
+                  {/* Real bouquet built from layered, arranged flowers */}
+                  <div className="relative mx-auto mt-6 h-72 w-64 sm:h-80 sm:w-72 select-none">
+                    {/* soft glow behind */}
+                    <div className="absolute inset-0 rounded-full blur-3xl bg-gradient-romance opacity-40" />
+
+                    {/* falling petals */}
+                    {["🌸", "🌷", "🌹", "🌺", "💮", "🌻"].map((p, i) => (
+                      <motion.span
+                        key={`petal-${i}`}
+                        className="absolute text-xl"
+                        style={{ left: `${10 + i * 14}%`, top: "-10%" }}
+                        animate={{ y: [0, 340], rotate: [0, 360], opacity: [0, 1, 1, 0] }}
+                        transition={{ repeat: Infinity, duration: 6, delay: i * 0.8, ease: "linear" }}
+                      >
+                        {p}
+                      </motion.span>
+                    ))}
+
+                    {/* flower cluster — arranged like a real bouquet */}
+                    <motion.div
+                      initial={{ scale: 0, y: 30 }}
+                      animate={{ scale: 1, y: 0 }}
+                      transition={{ type: "spring", duration: 1, bounce: 0.4 }}
+                      className="absolute inset-x-0 top-2 flex justify-center"
+                    >
+                      <div className="relative w-56 h-44">
+                        {/* back row */}
+                        <span className="absolute left-2 top-2 text-5xl rotate-[-15deg]" style={{ filter: "drop-shadow(0 6px 10px rgba(0,0,0,.3))" }}>🌹</span>
+                        <span className="absolute right-2 top-2 text-5xl rotate-[15deg]" style={{ filter: "drop-shadow(0 6px 10px rgba(0,0,0,.3))" }}>🌹</span>
+                        <span className="absolute left-1/2 -translate-x-1/2 top-0 text-6xl" style={{ filter: "drop-shadow(0 8px 14px rgba(0,0,0,.35))" }}>🌷</span>
+                        {/* mid row */}
+                        <span className="absolute left-6 top-12 text-5xl rotate-[-8deg]" style={{ filter: "drop-shadow(0 6px 10px rgba(0,0,0,.3))" }}>🌸</span>
+                        <span className="absolute right-6 top-12 text-5xl rotate-[8deg]" style={{ filter: "drop-shadow(0 6px 10px rgba(0,0,0,.3))" }}>🌺</span>
+                        <span className="absolute left-1/2 -translate-x-1/2 top-10 text-6xl" style={{ filter: "drop-shadow(0 8px 14px rgba(0,0,0,.35))" }}>🌻</span>
+                        {/* front row */}
+                        <span className="absolute left-10 top-24 text-4xl rotate-[-12deg]">💮</span>
+                        <span className="absolute right-10 top-24 text-4xl rotate-[12deg]">🌼</span>
+                        <span className="absolute left-1/2 -translate-x-1/2 top-24 text-5xl">🌹</span>
+                        {/* leaves */}
+                        <span className="absolute left-0 top-20 text-4xl rotate-[-30deg]">🍃</span>
+                        <span className="absolute right-0 top-20 text-4xl rotate-[30deg]">🍃</span>
+                      </div>
+                    </motion.div>
+
+                    {/* wrapper paper (cone) */}
+                    <div
+                      className="absolute left-1/2 -translate-x-1/2 bottom-2 w-0 h-0"
+                      style={{
+                        borderLeft: "70px solid transparent",
+                        borderRight: "70px solid transparent",
+                        borderTop: "110px solid #ffd1e0",
+                        filter: "drop-shadow(0 10px 18px rgba(0,0,0,.35))",
+                      }}
+                    />
+                    <div
+                      className="absolute left-1/2 -translate-x-1/2 bottom-2 w-0 h-0"
+                      style={{
+                        borderLeft: "55px solid transparent",
+                        borderRight: "55px solid transparent",
+                        borderTop: "90px solid #ffb3c8",
+                      }}
+                    />
+                    {/* ribbon */}
+                    <div className="absolute left-1/2 -translate-x-1/2 bottom-12 text-3xl">🎀</div>
+                  </div>
+
                   <button
                     onClick={() => setStep(9)}
                     className="mt-6 bg-gradient-button text-primary-foreground px-7 py-3 rounded-full font-semibold shadow-soft hover:scale-105 transition-transform"
@@ -344,16 +392,37 @@ function Index() {
 
               {step === 9 && (
                 <>
-                  <motion.img
-                    src="https://media.giphy.com/media/xF77nzFm0dNK1MHnAc/giphy.gif"
-                    alt="Cat blowing a heart kiss"
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ type: "spring", duration: 0.9, bounce: 0.5 }}
-                    className="mx-auto mb-4 h-44 w-44 sm:h-52 sm:w-52 object-contain rounded-3xl shadow-glow border-4 border-white/40 bg-white/10"
-                  />
+                  {/* Big animated heart instead of basic gif */}
+                  <div className="relative mx-auto mb-4 h-44 w-44 sm:h-52 sm:w-52 flex items-center justify-center">
+                    <motion.div
+                      className="absolute inset-0 rounded-full"
+                      style={{ background: "radial-gradient(circle, rgba(255,94,138,0.55), transparent 65%)" }}
+                      animate={{ scale: [1, 1.25, 1], opacity: [0.6, 0.9, 0.6] }}
+                      transition={{ repeat: Infinity, duration: 1.6 }}
+                    />
+                    <motion.div
+                      className="text-[10rem] sm:text-[11rem] leading-none relative"
+                      style={{ filter: "drop-shadow(0 0 30px rgba(255,94,138,0.7))" }}
+                      animate={{ scale: [1, 1.15, 0.95, 1.1, 1] }}
+                      transition={{ repeat: Infinity, duration: 1.2, ease: "easeInOut" }}
+                    >
+                      ❤️
+                    </motion.div>
+                    {["💕", "💖", "💗", "💝", "💘"].map((h, i) => (
+                      <motion.span
+                        key={i}
+                        className="absolute text-2xl"
+                        style={{ left: `${15 + i * 16}%`, top: "50%" }}
+                        animate={{ y: [-10, -90], opacity: [0, 1, 0], scale: [0.6, 1.2, 0.8] }}
+                        transition={{ repeat: Infinity, duration: 2.2, delay: i * 0.3 }}
+                      >
+                        {h}
+                      </motion.span>
+                    ))}
+                  </div>
+
                   <motion.h1
-                    className="mt-2 text-4xl sm:text-5xl font-bold bg-gradient-romance bg-clip-text text-transparent"
+                    className="love-text mt-2 text-5xl sm:text-6xl font-extrabold tracking-tight"
                     animate={{ scale: [1, 1.05, 1] }}
                     transition={{ repeat: Infinity, duration: 2 }}
                   >
