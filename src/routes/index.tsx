@@ -67,8 +67,8 @@ function Index() {
               {step === 0 && (
                 <>
                   <motion.img
-                    src="https://media.giphy.com/media/kQVXaC7kGr0DoGtSYl/giphy.gif"
-                    alt="Pingu waving hello"
+                    src="https://media.giphy.com/media/3o6Zt481isNVuQI1l6/giphy.gif"
+                    alt="Cute surprise gift with balloons"
                     initial={{ scale: 0, rotate: -10 }}
                     animate={{ scale: 1, rotate: 0 }}
                     transition={{ type: "spring", duration: 0.9, bounce: 0.5 }}
