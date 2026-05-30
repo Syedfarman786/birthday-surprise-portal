@@ -67,12 +67,12 @@ function Index() {
               {step === 0 && (
                 <>
                   <motion.img
-                    src="https://media.giphy.com/media/kQVXaC7kGr0DoGtSYl/giphy.gif"
-                    alt="Cute penguin waving hello"
+                    src="https://media.giphy.com/media/l46Cy1rHbReeerx84/giphy.gif"
+                    alt="Cute animal welcoming you"
                     initial={{ scale: 0, rotate: -10 }}
                     animate={{ scale: 1, rotate: 0 }}
                     transition={{ type: "spring", duration: 0.9, bounce: 0.5 }}
-                    className="mx-auto mb-4 h-44 w-44 sm:h-52 sm:w-52 object-contain rounded-3xl shadow-glow border-4 border-white/40 bg-white/10"
+                    className="mx-auto mb-4 h-44 w-44 sm:h-52 sm:w-52 object-cover rounded-3xl shadow-glow border-4 border-white/40 bg-white/10"
                   />
                   <h1 className="text-3xl sm:text-4xl font-bold text-foreground text-shadow-glow">
                     I made something special for you
@@ -127,6 +127,8 @@ function Index() {
 
               {step === 3 && (
                 <>
+                  {/* Happy Birthday music */}
+                  <audio src="/happy-birthday.ogg" autoPlay loop />
                   {/* Floating party emojis */}
                   <div className="flex justify-center gap-2 text-2xl mb-2">
                     {["🎉", "✨", "🎊", "✨", "🎉"].map((e, i) => (
@@ -314,13 +316,16 @@ function Index() {
                   </h1>
                   <p className="mt-2 text-foreground/80">Because you brighten my world.</p>
 
-                  <motion.img
-                    src="https://media.giphy.com/media/5SbA6ZRhiI5jriUwqu/giphy.gif"
-                    alt="Cute cat giving flowers"
-                    initial={{ scale: 0, rotate: -15 }}
+                  <motion.video
+                    src="/special-video.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    initial={{ scale: 0, rotate: -10 }}
                     animate={{ scale: 1, rotate: 0 }}
                     transition={{ type: "spring", duration: 0.9, bounce: 0.5 }}
-                    className="mx-auto mt-4 h-36 w-36 sm:h-40 sm:w-40 object-contain rounded-3xl shadow-glow border-4 border-white/40 bg-white/10"
+                    className="mx-auto mt-4 h-56 w-56 sm:h-64 sm:w-64 object-cover rounded-3xl shadow-glow border-4 border-white/40 bg-white/10"
                   />
 
                   {/* Real bouquet built from layered, arranged flowers */}
