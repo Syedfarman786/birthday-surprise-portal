@@ -18,6 +18,20 @@ function Index() {
   const [step, setStep] = useState(0);
   const [noPos, setNoPos] = useState({ x: 0, y: 0 });
   const [noCount, setNoCount] = useState(0);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  // Auto-play birthday song when reaching the cake page
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (step === 3) {
+      audio.currentTime = 0;
+      audio.volume = 0.8;
+      audio.play().catch(() => {});
+    } else {
+      audio.pause();
+    }
+  }, [step]);
 
   // Birthday confetti
   useEffect(() => {
