@@ -62,6 +62,7 @@ function Index() {
 
   return (
     <main className="relative min-h-screen w-full overflow-hidden bg-gradient-dreamy flex items-center justify-center px-4 py-8">
+      <audio ref={audioRef} src="/happy-birthday.ogg" loop preload="auto" />
       <FloatingHearts />
       <Sparkles />
 
