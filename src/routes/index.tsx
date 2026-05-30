@@ -143,7 +143,7 @@ function Index() {
               {step === 3 && (
                 <>
                   {/* Happy Birthday music */}
-                  <audio src="/happy-birthday.ogg" autoPlay loop />
+                  
                   {/* Floating party emojis */}
                   <div className="flex justify-center gap-2 text-2xl mb-2">
                     {["🎉", "✨", "🎊", "✨", "🎉"].map((e, i) => (
