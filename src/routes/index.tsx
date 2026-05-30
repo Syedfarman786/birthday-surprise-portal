@@ -25,9 +25,9 @@ function Index() {
     const audio = audioRef.current;
     if (!audio) return;
     if (step === 3) {
-      audio.currentTime = 0;
+      audio.currentTime = 10;
       audio.volume = 0.8;
-      audio.play().catch(() => {});
+      audio.play().catch(() => { });
     } else {
       audio.pause();
     }
@@ -82,7 +82,7 @@ function Index() {
               {step === 0 && (
                 <>
                   <motion.img
-                    src="/welcome.gif"
+                    src="/foru.gif"
                     alt="Cute animal welcoming you"
                     initial={{ scale: 0, rotate: -10 }}
                     animate={{ scale: 1, rotate: 0 }}
@@ -143,7 +143,7 @@ function Index() {
               {step === 3 && (
                 <>
                   {/* Happy Birthday music */}
-                  
+
                   {/* Floating party emojis */}
                   <div className="flex justify-center gap-2 text-2xl mb-2">
                     {["🎉", "✨", "🎊", "✨", "🎉"].map((e, i) => (
@@ -276,11 +276,30 @@ function Index() {
                     💖
                   </motion.div>
                   <h1 className="text-2xl sm:text-3xl font-bold text-foreground text-shadow-glow">
-                    My Dearest,
+                    🎂 Assalamu Alaikum & Happy Birthday 🎂,
                   </h1>
                   <p className="mt-4 text-foreground/95 leading-relaxed">
-                    You are the most amazing person in my life. Every day with you feels like magic.
-                    On your special day, I just want you to know — you are loved, cherished, and adored. 🌹
+                    Today is a special day because it reminds us of the blessing of your presence in this world. Alhamdulillah, Allah chose this day to bring someone so kind, strong, and valuable into the lives of the people around you. <br/>
+
+                    Not every person we meet becomes close to our heart, but some people become a beautiful part of our journey. You are one of those people for me. Our friendship is something I truly cherish, and I thank Allah for blessing me with a friend like you. Distance, time, and circumstances may change many things, but genuine friendship built on respect, care, and sincere duas remains strong. <br/>
+
+                    As you step into another year of life, always remember the words of Allah: <br/>
+
+                    "Indeed, with hardship comes ease." (Surah Ash-Sharh 94:6) <br/>
+
+                    And: <br/>
+
+                    "And whoever puts their trust in Allah, then He is sufficient for them." (Surah At-Talaq 65:3) <br/>
+
+                    No matter what challenges come your way, never lose hope in Allah's mercy and plan. Every difficulty you face is shaping you into a stronger and better person. Keep believing in yourself, keep working hard, and keep trusting Allah, because He has written a future for you that is far better than anything you can imagine. <br/>
+
+                    I want you to know that you are appreciated, respected, and loved as a friend. True friendship is not measured by how often we meet, but by how sincerely we care for each other, remember each other in our prayers, and stand by one another through life's ups and downs. <br/>
+
+                    On your birthday, my heartfelt dua is that Allah fills your life with happiness, barakah, good health, success, and peace. May Allah protect you from every hardship, guide you toward what is best, and grant you all the goodness of this world and the Hereafter. Ameen. <br/>
+
+                    May this year bring you closer to your dreams, strengthen your faith, and fill your heart with contentment and joy. <br/>
+
+                    Happy Birthday once again, my dear friend. May Allah always keep you smiling and blessed. 🤍✨🌹 <br/>
                   </p>
                   <button
                     onClick={() => setStep(6)}
@@ -293,11 +312,11 @@ function Index() {
 
               {step === 6 && (
                 <>
-                  <h1 className="text-2xl font-bold text-foreground text-shadow-glow">🎟️ Love Coupons</h1>
+                  <h1 className="text-2xl font-bold text-foreground text-shadow-glow">🎟️ Some Coupons</h1>
                   <p className="text-foreground/80 text-sm mt-1">Redeem anytime 💕</p>
                   <div className="grid grid-cols-2 gap-3 mt-5">
                     {[
-                      { label: "Dinner Date", emoji: "🍽️" },
+                      { label: "Dinner", emoji: "🍽️" },
                       { label: "Movie Night", emoji: "🎬" },
                       { label: "Day Out", emoji: "💕" },
                       { label: "Surprise Gift", emoji: "🎁" },
@@ -329,7 +348,7 @@ function Index() {
                   <h1 className="text-2xl sm:text-3xl font-bold text-foreground text-shadow-glow">
                     A bouquet, just for you 💐
                   </h1>
-                  <p className="mt-2 text-foreground/80">Because you brighten my world.</p>
+                  <p className="mt-2 text-foreground/80">Because you brighten people's world.</p>
 
                   <motion.img
                     src="https://media.giphy.com/media/5SbA6ZRhiI5jriUwqu/giphy.gif"
@@ -478,10 +497,10 @@ function Index() {
                     animate={{ scale: [1, 1.05, 1] }}
                     transition={{ repeat: Infinity, duration: 2 }}
                   >
-                    I Love You
+                    Alishey Zafar Shaikh (Zia, Dua, Mishri, Gudiya)
                   </motion.h1>
                   <p className="mt-4 text-lg text-foreground/95">
-                    Stay with me forever. Happy Birthday, my love. ❤️
+                    Hope we stay like this forever. <br/> Happy Birthday, Tinde & Arvi ki Sabzi. ❤️
                   </p>
                   <button
                     onClick={() => setStep(0)}
