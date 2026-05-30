@@ -67,7 +67,7 @@ function Index() {
               {step === 0 && (
                 <>
                   <motion.img
-                    src="https://media.giphy.com/media/l46Cy1rHbReeerx84/giphy.gif"
+                    src="/welcome.gif"
                     alt="Cute animal welcoming you"
                     initial={{ scale: 0, rotate: -10 }}
                     animate={{ scale: 1, rotate: 0 }}
@@ -316,16 +316,13 @@ function Index() {
                   </h1>
                   <p className="mt-2 text-foreground/80">Because you brighten my world.</p>
 
-                  <motion.video
-                    src="/special-video.mp4"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    initial={{ scale: 0, rotate: -10 }}
+                  <motion.img
+                    src="https://media.giphy.com/media/5SbA6ZRhiI5jriUwqu/giphy.gif"
+                    alt="Cute cat giving flowers"
+                    initial={{ scale: 0, rotate: -15 }}
                     animate={{ scale: 1, rotate: 0 }}
                     transition={{ type: "spring", duration: 0.9, bounce: 0.5 }}
-                    className="mx-auto mt-4 h-56 w-56 sm:h-64 sm:w-64 object-cover rounded-3xl shadow-glow border-4 border-white/40 bg-white/10"
+                    className="mx-auto mt-4 h-36 w-36 sm:h-40 sm:w-40 object-contain rounded-3xl shadow-glow border-4 border-white/40 bg-white/10"
                   />
 
                   {/* Real bouquet built from layered, arranged flowers */}
@@ -395,10 +392,36 @@ function Index() {
                   </div>
 
                   <button
-                    onClick={() => setStep(9)}
+                    onClick={() => setStep(8)}
                     className="mt-6 bg-gradient-button text-primary-foreground px-7 py-3 rounded-full font-semibold shadow-soft hover:scale-105 transition-transform"
                   >
                     One more thing →
+                  </button>
+                </>
+              )}
+
+              {step === 8 && (
+                <>
+                  <h1 className="text-2xl sm:text-3xl font-bold text-foreground text-shadow-glow">
+                    A little something for you 🎁
+                  </h1>
+                  <p className="mt-2 text-foreground/80">Press play and enjoy 💕</p>
+                  <motion.video
+                    src="/special-video.mp4"
+                    controls
+                    autoPlay
+                    loop
+                    playsInline
+                    initial={{ scale: 0.85, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ type: "spring", duration: 0.8, bounce: 0.4 }}
+                    className="mx-auto mt-5 w-full max-w-sm rounded-3xl shadow-glow border-4 border-white/40 bg-black/40"
+                  />
+                  <button
+                    onClick={() => setStep(9)}
+                    className="mt-6 bg-gradient-button text-primary-foreground px-7 py-3 rounded-full font-semibold shadow-soft hover:scale-105 transition-transform"
+                  >
+                    Continue →
                   </button>
                 </>
               )}
