@@ -18,6 +18,20 @@ function Index() {
   const [step, setStep] = useState(0);
   const [noPos, setNoPos] = useState({ x: 0, y: 0 });
   const [noCount, setNoCount] = useState(0);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  // Auto-play birthday song when reaching the cake page
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    if (step === 3) {
+      audio.currentTime = 0;
+      audio.volume = 0.8;
+      audio.play().catch(() => {});
+    } else {
+      audio.pause();
+    }
+  }, [step]);
 
   // Birthday confetti
   useEffect(() => {
@@ -48,6 +62,7 @@ function Index() {
 
   return (
     <main className="relative min-h-screen w-full overflow-hidden bg-gradient-dreamy flex items-center justify-center px-4 py-8">
+      <audio ref={audioRef} src="/happy-birthday.ogg" loop preload="auto" />
       <FloatingHearts />
       <Sparkles />
 
@@ -128,7 +143,7 @@ function Index() {
               {step === 3 && (
                 <>
                   {/* Happy Birthday music */}
-                  <audio src="/happy-birthday.ogg" autoPlay loop />
+                  
                   {/* Floating party emojis */}
                   <div className="flex justify-center gap-2 text-2xl mb-2">
                     {["🎉", "✨", "🎊", "✨", "🎉"].map((e, i) => (
